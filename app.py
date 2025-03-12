@@ -9,7 +9,7 @@ st.header('Welcome to Streamlit!')
 
 
 
-openai.api_key="1372a9bac82e4442aa917f1e469ee1b0"
+openai.api_key="key"
 
 def main():
     st.title("Product Description Generator")
