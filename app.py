@@ -1,4 +1,33 @@
 import streamlit as st
+import openai
+import streamlit as st
 
 
 st.header('Welcome to Streamlit!')
+
+
+
+
+
+openai.api_key="1372a9bac82e4442aa917f1e469ee1b0"
+
+def main():
+    st.title("Product Description Generator")
+    notes = st.text_area("Enter product information:")
+    if st.button("Generate description"):
+        with st.spinner("Generating description..."):
+            response = openai.Completion.create(
+              model="text-davinci-003",
+              prompt=f"Write a product description based on the below information.\n\n{notes}\n\nDescription:",
+              temperature=0.7,
+              max_tokens=256,
+              top_p=1,
+              frequency_penalty=0,
+              presence_penalty=0
+            )
+        description = response['choices'][0]['text']
+        st.subheader("Generated description:")
+        st.write(description)
+
+if __name__ == "__main__":
+    main()
